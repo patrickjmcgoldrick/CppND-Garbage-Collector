@@ -106,8 +106,6 @@ Pointer<T,size>::Pointer(T *t){
         atexit(shutdown);
     first = false;
 
-    // TODO: Implement Pointer constructor
-    // Lab: Smart Pointer Project Lab
     addr = t;
     arraySize = size;
     if (size > 0) {
@@ -122,8 +120,6 @@ Pointer<T,size>::Pointer(T *t){
 template< class T, int size>
 Pointer<T,size>::Pointer(const Pointer &ob){
 
-    // TODO: Implement Pointer constructor
-    // Lab: Smart Pointer Project Lab
     typename std::list<PtrDetails<T>>::iterator p;
     p = findPtrInfo(ob.addr);
     p->refcount++;
@@ -141,12 +137,9 @@ Pointer<T,size>::Pointer(const Pointer &ob){
 template <class T, int size>
 Pointer<T, size>::~Pointer(){
 
-    // TODO: Implement Pointer destructor
-    // Lab: New and Delete Project Lab
     typename std::list<PtrDetails<T> >::iterator p;
     p = findPtrInfo(addr);
     
-    // TODO: Finalize Pointer destructor
     // decrement ref count
     if (p->refcount) {
         p->refcount--;
@@ -165,15 +158,13 @@ Pointer<T, size>::~Pointer(){
 template <class T, int size>
 bool Pointer<T, size>::collect(){
 
-    // TODO: Implement collect function
-    // LAB: New and Delete Project Lab
     // Note: collect() will be called in the destructor
     bool memfreed = false;
     typename std::list<PtrDetails<T> >::iterator p;
     do{
         // Scan refContainer looking for unreferenced pointers.
         for (p = refContainer.begin(); p != refContainer.end(); p++){
-            // TODO: Implement collect()
+
             // If in-use, skip.
             if (p->refcount > 0) {
                 continue;
@@ -204,8 +195,6 @@ bool Pointer<T, size>::collect(){
 template <class T, int size>
 T *Pointer<T, size>::operator=(T *t){
 
-    // TODO: Implement operator==
-    // LAB: Smart Pointer Project Lab
     typename std::list<PtrDetails<T>>::iterator p;
 
     p = findPtrInfo(addr);
@@ -231,8 +220,6 @@ T *Pointer<T, size>::operator=(T *t){
 template <class T, int size>
 Pointer<T, size> &Pointer<T, size>::operator=(Pointer &rv){
 
-    // TODO: Implement operator==
-    // LAB: Smart Pointer Project Lab
     typename std::list<PtrDetails<T>>::iterator p;
 
     p = findPtrInfo(addr);

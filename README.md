@@ -25,8 +25,3 @@ $ ./make
 $ ./compiled
 ```
 
-## Project TODO List:
-- Complete `Pointer` constructor
-- Complete `Pointer` `operator==`
-- Complete `Pointer` destructor
-- Complete `PtrDetails` class
